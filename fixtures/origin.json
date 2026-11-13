@@ -1,0 +1,154 @@
+{
+  "identity_fields": [
+    "issuer",
+    "alert",
+    "revision"
+  ],
+  "source_records": [
+    {
+      "issuer": "weather-a",
+      "alert": "RAIN-5",
+      "revision": 1,
+      "regions": [
+        "county-1"
+      ],
+      "boundary_version": "2026-a",
+      "status": "active"
+    },
+    {
+      "issuer": "weather-a",
+      "alert": "RAIN-5",
+      "revision": 2,
+      "regions": [
+        "town-11",
+        "town-12"
+      ],
+      "boundary_version": "2026-b",
+      "status": "active"
+    },
+    {
+      "issuer": "weather-a",
+      "alert": "RAIN-5",
+      "revision": 3,
+      "regions": [],
+      "boundary_version": "2026-b",
+      "status": "cancelled"
+    },
+    {
+      "issuer": "weather-b",
+      "alert": "RAIN-5",
+      "revision": 2,
+      "regions": [
+        "county-1"
+      ],
+      "boundary_version": "2026-a",
+      "status": "active"
+    }
+  ],
+  "portal": {
+    "csrf": "form-2026-b"
+  },
+  "routes": {
+    "/feed": {
+      "body": "<!doctype html><html lang='zh'><meta charset='utf-8'><title>来源目录</title><body>\n<article><h2>来源记录</h2>\n<dl><dt>issuer</dt><dd>weather-a</dd><dt>alert</dt><dd>RAIN-5</dd><dt>revision</dt><dd>1</dd><dt>regions</dt><dd>[&#x27;county-1&#x27;]</dd><dt>boundary_version</dt><dd>2026-a</dd><dt>status</dt><dd>active</dd></dl>\n</article>\n<article><h2>来源记录</h2>\n<dl><dt>issuer</dt><dd>weather-a</dd><dt>alert</dt><dd>RAIN-5</dd><dt>revision</dt><dd>2</dd><dt>regions</dt><dd>[&#x27;town-11&#x27;, &#x27;town-12&#x27;]</dd><dt>boundary_version</dt><dd>2026-b</dd><dt>status</dt><dd>active</dd></dl>\n</article>\n<article><h2>来源记录</h2>\n<dl><dt>issuer</dt><dd>weather-a</dd><dt>alert</dt><dd>RAIN-5</dd><dt>revision</dt><dd>3</dd><dt>regions</dt><dd>[]</dd><dt>boundary_version</dt><dd>2026-b</dd><dt>status</dt><dd>cancelled</dd></dl>\n</article>\n<article><h2>来源记录</h2>\n<dl><dt>issuer</dt><dd>weather-b</dd><dt>alert</dt><dd>RAIN-5</dd><dt>revision</dt><dd>2</dd><dt>regions</dt><dd>[&#x27;county-1&#x27;]</dd><dt>boundary_version</dt><dd>2026-a</dd><dt>status</dt><dd>active</dd></dl>\n</article>\n<script type=\"application/json\" id=\"source-records\">[{\"issuer\": \"weather-a\", \"alert\": \"RAIN-5\", \"revision\": 1, \"regions\": [\"county-1\"], \"boundary_version\": \"2026-a\", \"status\": \"active\"}, {\"issuer\": \"weather-a\", \"alert\": \"RAIN-5\", \"revision\": 2, \"regions\": [\"town-11\", \"town-12\"], \"boundary_version\": \"2026-b\", \"status\": \"active\"}, {\"issuer\": \"weather-a\", \"alert\": \"RAIN-5\", \"revision\": 3, \"regions\": [], \"boundary_version\": \"2026-b\", \"status\": \"cancelled\"}, {\"issuer\": \"weather-b\", \"alert\": \"RAIN-5\", \"revision\": 2, \"regions\": [\"county-1\"], \"boundary_version\": \"2026-a\", \"status\": \"active\"}]</script></body></html>",
+      "content_type": "text/html; charset=utf-8",
+      "headers": {
+        "ETag": "feed-1"
+      }
+    },
+    "/rate-limited": {
+      "status": 429,
+      "headers": {
+        "Retry-After": "2"
+      },
+      "json": {
+        "error": "quota"
+      }
+    },
+    "/unstable": [
+      {
+        "status": 503,
+        "body": "temporarily unavailable"
+      },
+      {
+        "json": {
+          "items": []
+        }
+      }
+    ],
+    "/range": {
+      "body": "0123456789",
+      "range": true
+    },
+    "/range-ignored": {
+      "body": "0123456789"
+    },
+    "/truncated": {
+      "body": "partial",
+      "truncate": true
+    },
+    "/observations/1": {
+      "json": {
+        "items": [
+          {
+            "issuer": "weather-a",
+            "alert": "RAIN-5",
+            "revision": 1,
+            "regions": [
+              "county-1"
+            ],
+            "boundary_version": "2026-a",
+            "status": "active"
+          }
+        ]
+      }
+    },
+    "/observations/2": {
+      "json": {
+        "items": [
+          {
+            "issuer": "weather-a",
+            "alert": "RAIN-5",
+            "revision": 2,
+            "regions": [
+              "town-11",
+              "town-12"
+            ],
+            "boundary_version": "2026-b",
+            "status": "active"
+          }
+        ]
+      }
+    },
+    "/observations/3": {
+      "json": {
+        "items": [
+          {
+            "issuer": "weather-a",
+            "alert": "RAIN-5",
+            "revision": 3,
+            "regions": [],
+            "boundary_version": "2026-b",
+            "status": "cancelled"
+          }
+        ]
+      }
+    },
+    "/observations/4": {
+      "json": {
+        "items": [
+          {
+            "issuer": "weather-b",
+            "alert": "RAIN-5",
+            "revision": 2,
+            "regions": [
+              "county-1"
+            ],
+            "boundary_version": "2026-a",
+            "status": "active"
+          }
+        ]
+      }
+    }
+  }
+}
