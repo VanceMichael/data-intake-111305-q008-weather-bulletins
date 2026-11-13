@@ -1,17 +1,17 @@
 [
   {
-    "name": "body_boundary_skew",
-    "situation": "正文修订与区域文件分次到达",
-    "observable": "未配套前不伪造完整影响区"
+    "name": "name",
+    "situation": "situation",
+    "observable": "observable"
   },
   {
-    "name": "cancel_after_send",
-    "situation": "部分订阅者已收到旧版",
-    "observable": "撤下待发并关联更正，不重复发"
+    "name": "name",
+    "situation": "situation",
+    "observable": "observable"
   },
   {
-    "name": "issuer_conflict",
-    "situation": "来源相互矛盾",
-    "observable": "不强行合成唯一确定事件"
+    "name": "name",
+    "situation": "situation",
+    "observable": "observable"
   }
 ]
