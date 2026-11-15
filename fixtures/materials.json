@@ -1,0 +1,43 @@
+{
+  "boundaries": [
+    {
+      "version": "2026-a",
+      "regions": [
+        {"code": "county-1", "area_id": "area-county-1", "name": "甲县", "kind": "county"},
+        {"code": "county-2", "area_id": "area-county-2", "name": "乙县", "kind": "county"},
+        {"code": "town-11", "area_id": "area-town-11", "name": "甲县一镇", "kind": "town", "parent": "county-1"},
+        {"code": "town-12", "area_id": "area-town-12", "name": "甲县二镇", "kind": "town", "parent": "county-1"},
+        {"code": "town-99", "area_id": "area-west", "name": "甲县西镇", "kind": "town", "parent": "county-1"},
+        {"code": "town-21", "area_id": "area-town-21", "name": "乙县一镇", "kind": "town", "parent": "county-2"}
+      ]
+    },
+    {
+      "version": "2026-b",
+      "regions": [
+        {"code": "county-1", "area_id": "area-county-1", "name": "甲县", "kind": "county"},
+        {"code": "county-2", "area_id": "area-county-2", "name": "乙县", "kind": "county"},
+        {"code": "county-3", "area_id": "area-county-3", "name": "丙县（新设）", "kind": "county"},
+        {"code": "town-11", "area_id": "area-town-11", "name": "甲县一镇", "kind": "town", "parent": "county-1"},
+        {"code": "town-12", "area_id": "area-town-12", "name": "甲县二镇", "kind": "town", "parent": "county-1"},
+        {"code": "town-98", "area_id": "area-west", "name": "甲县西镇（原 town-99 改码）", "kind": "town", "parent": "county-1"},
+        {"code": "town-99", "area_id": "area-east", "name": "乙县东镇（代码复用）", "kind": "town", "parent": "county-2"},
+        {"code": "town-21", "area_id": "area-town-21", "name": "乙县一镇", "kind": "town", "parent": "county-2"},
+        {"code": "town-31", "area_id": "area-town-31", "name": "丙县一镇（新设）", "kind": "town", "parent": "county-3"}
+      ]
+    }
+  ],
+  "rosters": [
+    {
+      "roster_version": "2026-06",
+      "subscribers": [
+        {"id": "sub-county", "region": "county-1", "boundary_version": "2026-a"},
+        {"id": "sub-town-11", "region": "town-11", "boundary_version": "2026-a"},
+        {"id": "sub-town-12", "region": "town-12", "boundary_version": "2026-a"},
+        {"id": "sub-west", "region": "town-99", "boundary_version": "2026-a"},
+        {"id": "sub-town-21", "region": "town-21", "boundary_version": "2026-a"},
+        {"id": "sub-east", "region": "town-99", "boundary_version": "2026-b"},
+        {"id": "sub-town-31", "region": "town-31", "boundary_version": "2026-b"}
+      ]
+    }
+  ]
+}

@@ -1,17 +1,43 @@
 [
   {
-    "name": "name",
-    "situation": "situation",
-    "observable": "observable"
+    "name": "整县先行、范围文件后到",
+    "situation": "采集端先收到整县正文（revision 1），之后才收到把范围缩小到两个乡镇的范围文件（revision 2）。",
+    "observable": "event RAIN-5 的有效修订为 2；revision 1 仍保留为证据，覆盖 county-1。",
+    "expected": {
+      "effective_revision": 2,
+      "boundary_version": "2026-b",
+      "covered_areas": ["area-town-11", "area-town-12"]
+    }
   },
   {
-    "name": "name",
-    "situation": "situation",
-    "observable": "observable"
+    "name": "边界版本改变同一代码的含义",
+    "situation": "town-99 在 2026-a 属甲县西镇，在 2026-b 被复用为乙县东镇；订阅者分别登记在两个版本。",
+    "observable": "sub-west 只受 2026-a 范围影响，sub-east 只受 2026-b 范围影响，不能混用今天的边界。",
+    "expected": {
+      "covered_areas_2026_a_town_99": ["area-west"],
+      "covered_areas_2026_b_town_99": ["area-east"]
+    }
   },
   {
-    "name": "name",
-    "situation": "situation",
-    "observable": "observable"
+    "name": "缩放与撤销的通知差异",
+    "situation": "revision 1 整县、revision 2 缩小到两镇、revision 3 撤销；部分通知尚未发出，部分已发出。",
+    "observable": "未发送的旧通知撤下；已发送且不再受影响的通知生成关联更正；采集重试不重复发出更正。",
+    "expected": {
+      "pending_withdrawn_before_send": true,
+      "sent_gets_correction": true,
+      "retry_is_idempotent": true
+    }
+  },
+  {
+    "name": "两家来源结论不一致",
+    "situation": "weather-a 认为已撤销，weather-b 仍以旧边界版本维持整县有效。",
+    "observable": "两条来源结论分别保留，不合并成一个“当前范围”，供值班员处置。",
+    "expected": {"conflict": "source-disagreement", "per_source_conclusions": 2}
+  },
+  {
+    "name": "配套资料未到齐",
+    "situation": "观测带 regions 但缺少对应的边界版本文件；或区域代码在该版本内不存在。",
+    "observable": "显示 missing boundary:2026-c、region:town-31@2026-b 等，不凭正文推断范围。",
+    "expected": {"missing_labels_reported": true}
   }
 ]
