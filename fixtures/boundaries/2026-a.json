@@ -1,0 +1,15 @@
+{
+  "version": "2026-a",
+  "regions": [
+    {
+      "code": "county-1",
+      "name": "合成县一",
+      "covers": ["place-n", "place-e", "place-c", "place-s", "place-w", "place-f"]
+    },
+    {
+      "code": "county-2",
+      "name": "合成县二",
+      "covers": ["place-g"]
+    }
+  ]
+}

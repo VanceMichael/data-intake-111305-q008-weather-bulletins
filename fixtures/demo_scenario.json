@@ -1,0 +1,56 @@
+{
+  "portal": {"csrf": "form-2026-b"},
+  "routes": {
+    "/flood-1": {
+      "json": {
+        "items": [
+          {"issuer": "weather-a", "alert": "FLOOD-7", "revision": 1, "regions": ["town-11"], "boundary_version": "2026-b", "status": "active"}
+        ]
+      }
+    },
+    "/flood-2": {
+      "json": {
+        "items": [
+          {"issuer": "weather-a", "alert": "FLOOD-7", "revision": 2, "regions": ["town-11", "town-12"], "boundary_version": "2026-b", "status": "active"}
+        ]
+      }
+    },
+    "/flood-3": {
+      "json": {
+        "items": [
+          {"issuer": "weather-a", "alert": "FLOOD-7", "revision": 3, "regions": ["town-11"], "boundary_version": "2026-b", "status": "active"}
+        ]
+      }
+    },
+    "/flood-4": {
+      "json": {
+        "items": [
+          {"issuer": "weather-a", "alert": "FLOOD-7", "revision": 4, "regions": [], "boundary_version": "2026-b", "status": "cancelled"}
+        ]
+      }
+    },
+    "/rain-1": {
+      "json": {
+        "items": [
+          {"issuer": "weather-a", "alert": "RAIN-5", "revision": 1, "regions": ["county-1"], "boundary_version": "2026-a", "status": "active"}
+        ]
+      },
+      "headers": {"ETag": "rain-1"}
+    },
+    "/rain-2": {
+      "json": {
+        "items": [
+          {"issuer": "weather-a", "alert": "RAIN-5", "revision": 2, "regions": ["town-11", "town-12"], "boundary_version": "2026-b", "status": "active"}
+        ]
+      },
+      "headers": {"ETag": "rain-2"}
+    },
+    "/rain-2-other-source": {
+      "json": {
+        "items": [
+          {"issuer": "weather-b", "alert": "RAIN-5", "revision": 2, "regions": ["county-1"], "boundary_version": "2026-a", "status": "active"}
+        ]
+      }
+    }
+  }
+}

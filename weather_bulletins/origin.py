@@ -7,13 +7,19 @@ from pathlib import Path
 from urllib.parse import parse_qs, urlsplit
 
 
+def fixtures_directory():
+    """合成资料的目录位置，源码树与已安装 wheel 都适用。"""
+    packaged = Path(__file__).parent / "fixtures"
+    if packaged.is_dir():
+        return packaged
+    return Path(__file__).parents[1] / "fixtures"
+
+
 def load_scenario(path=None):
     if path is not None:
         scenario = Path(path)
     else:
-        scenario = Path(__file__).parent / "fixtures" / "origin.json"
-        if not scenario.is_file():
-            scenario = Path(__file__).parents[1] / "fixtures" / "origin.json"
+        scenario = fixtures_directory() / "origin.json"
     return json.loads(scenario.read_text(encoding="utf-8"))
 
 

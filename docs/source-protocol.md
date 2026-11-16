@@ -18,8 +18,13 @@
 
 ## 领域样例
 
-- `name`：situation；业务侧关注observable。
-- `name`：situation；业务侧关注observable。
-- `name`：situation；业务侧关注observable。
+`fixtures/origin.json` 的 `source_records` 保存业务侧关注的observable：
+
+- `issuer`、`alert`、`revision` 是供方声明的身份；不同来源可以声明同一 `alert`。
+- `regions` 是区域代码，`boundary_version` 指明这些代码属于哪个边界版本。
+- `status` 为 `active` 或 `cancelled`；撤销记录可以为空 `regions`。
+
+协议层只保留原文，不判断哪个修订现行。业务侧的解析规则见 `weather_bulletins/engine.py`：同一来源取最大修订号，区域一律按其自带的
+`boundary_version` 解析；边界资料未到齐时影响范围记为未确定，不按正文推断。
 
 另外提供 `/rate-limited`、`/unstable`、`/range`、`/range-ignored`、`/truncated`、`/observations/1`、`/observations/2`、`/observations/3`、`/observations/4`。响应内容和版本由场景文件逐项声明，便于核对实际收到的来源资料。

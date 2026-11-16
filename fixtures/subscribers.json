@@ -1,0 +1,17 @@
+[
+  {
+    "id": "subscriber-north",
+    "name": "北区值班组",
+    "covers": ["place-n", "place-e", "place-c"]
+  },
+  {
+    "id": "subscriber-south",
+    "name": "南区值班组",
+    "covers": ["place-s", "place-w"]
+  },
+  {
+    "id": "subscriber-far",
+    "name": "外县联动组",
+    "covers": ["place-f", "place-g"]
+  }
+]

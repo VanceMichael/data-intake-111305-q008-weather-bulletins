@@ -18,4 +18,4 @@ packages = ["weather_bulletins", "weather_bulletins.fixtures"]
 "weather_bulletins.fixtures" = "fixtures"
 
 [tool.setuptools.package-data]
-"weather_bulletins.fixtures" = ["*.json"]
+"weather_bulletins.fixtures" = ["*.json", "boundaries/*.json"]

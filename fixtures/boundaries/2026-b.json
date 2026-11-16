@@ -1,0 +1,20 @@
+{
+  "version": "2026-b",
+  "regions": [
+    {
+      "code": "town-11",
+      "name": "合成镇十一",
+      "covers": ["place-n", "place-e", "place-c"]
+    },
+    {
+      "code": "town-12",
+      "name": "合成镇十二",
+      "covers": ["place-s", "place-w"]
+    },
+    {
+      "code": "town-21",
+      "name": "合成镇二十一",
+      "covers": ["place-f"]
+    }
+  ]
+}

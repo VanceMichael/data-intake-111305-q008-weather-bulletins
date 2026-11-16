@@ -1,17 +1,36 @@
-[
-  {
-    "name": "name",
-    "situation": "situation",
-    "observable": "observable"
-  },
-  {
-    "name": "name",
-    "situation": "situation",
-    "observable": "observable"
-  },
-  {
-    "name": "name",
-    "situation": "situation",
-    "observable": "observable"
-  }
-]
+{
+  "description": "业务侧关注的交错情况。所有标识、地点与机构均为本地合成资料。",
+  "identity_fields": ["issuer", "alert", "revision"],
+  "cases": [
+    {
+      "name": "range_narrowing_after_out_of_order_capture",
+      "situation": "先收到整县范围（旧边界 2026-a），随后才收到缩小到两个乡镇的新版（2026-b）。",
+      "feed_order": ["RAIN-5@weather-a@1", "RAIN-5@weather-a@2"],
+      "observable": "有效结论取修订 2；北区、南区受影响，外县不受影响；修订 1 的通知若未发送则撤下。"
+    },
+    {
+      "name": "code_reused_across_boundary_versions",
+      "situation": "同一区域代码 county-1 在 2026-a 与 2026-c 中的覆盖地点不同。",
+      "feed_order": ["RAIN-5@weather-a@1"],
+      "observable": "解析结果必须使用记录声明的 boundary_version，不能使用当前版本。"
+    },
+    {
+      "name": "missing_boundary_materials",
+      "situation": "记录声明了尚未收到的边界版本或区域代码。",
+      "feed_order": ["RAIN-5@weather-a@2"],
+      "observable": "影响范围记为未确定，通知暂不发出，并列出缺少的版本或区域代码。"
+    },
+    {
+      "name": "cancel_after_send_and_pending",
+      "situation": "撤销到达时，上一版通知一条已发出、一条仍在队列。",
+      "feed_order": ["RAIN-5@weather-a@2", "RAIN-5@weather-a@3"],
+      "observable": "未发送通知转为 retracted；已发送通知生成关联更正；重复采集不重复生成更正。"
+    },
+    {
+      "name": "two_sources_disagree",
+      "situation": "weather-a 修订 2 只覆盖两个乡镇，weather-b 修订 2 仍覆盖整县。",
+      "feed_order": ["RAIN-5@weather-a@2", "RAIN-5@weather-b@2"],
+      "observable": "事件标记 disputed，两家来源结论并列保留，值班员据此处置。"
+    }
+  ]
+}
